@@ -5,16 +5,22 @@ var context = canvas.getContext('2d');
 
 init()
 
-// list of arrow location
-p_lst = [100, 100];
-// velocity of p
-v_lst = [2, 0]
+var p_lst = [];
+var len = 50;
+for (i = 0; i < len; i++) {
+    p_lst.push(new function() {
+                    this.posx = Math.round(Math.random()*window.innerWidth);
+                    this.posy = Math.round(Math.random()*window.innerWidth);
+                    this.velx = 0;
+                    this.vely = 0;
+                });
+}
+
 // cursor location
-c_loc = [0, 0];
-// max speed
-max = 2;
-// accelerate
-a = 0.25;
+c_loc = [window.innerWidth/2, window.innerHeight/2];
+c_r = 10
+max = 3; // max speed
+a = 0.5; // accelerate
 
 function init() {
     resize();
@@ -30,9 +36,8 @@ function resize() {
 function getMousePos(e) {
     var event = e || window.event;
     var rect = canvas.getBoundingClientRect();
-    c_loc[0] = event.clientX - rect.left;
-    console.log("after setting x");
-    c_loc[1] = event.clientY - rect.top;
+    c_loc[0] = event.clientX - rect.left + 8;
+    c_loc[1] = event.clientY - rect.top + 8;
 }
 
 function draw(e) {
@@ -44,11 +49,21 @@ function draw(e) {
     context.fillText(mes1, 5, 15);
     context.fillText(mes2, 5, 25);
 
-    // calculate point
-    ang = velo()
 
-    // print(arrow)
-    arrow(p_lst[0], p_lst[1], 10, Math.PI/6, ang);
+    // calculate point, and draw
+    context.fillStyle = 'blue';
+    p_lst.forEach(function(p){
+        ang = velo(p);
+        arrow(p.posx, p.posy, 10, Math.PI/6, ang);
+    });
+    circle(c_loc[0], c_loc[1], 10);
+}
+
+function circle(x, y, r) {
+    context.beginPath();
+    context.arc(x, y, r, 0, 2*Math.PI, false);
+    context.closePath();
+    context.fill();
 }
 
 function arrow(x, y, r, ang, dir){
@@ -73,23 +88,33 @@ function arrow(x, y, r, ang, dir){
 }
 
 // vector add
-function velo() {
+function velo(p) {
     // find target direction
-    dx = c_loc[0] - p_lst[0];
-    dy = c_loc[1] - p_lst[1];
+    dx = c_loc[0] - p.posx;
+    dy = c_loc[1] - p.posy;
     l = Math.sqrt(dx*dx + dy*dy);
+    if (l == 0)
+        return 0;
 
     // accelerate heading to target
-    v_lst[0] += a * dx/l;
-    v_lst[1] += a * dy/l;
-    V = Math.sqrt(v_lst[0]*v_lst[0] + v_lst[1]*v_lst[1]);
-    if (V > 5)
-        v_lst[0] = max * v_lst[0]/V;
-        v_lst[1] = max * v_lst[1]/V;
+    p.velx += a * dx/l;
+    p.vely += a * dy/l;
+    V = Math.sqrt(p.velx*p.velx + p.vely*p.vely);
+    if (V > max)
+        p.velx = max * p.velx/V;
+        p.vely = max * p.vely/V;
 
     // update arrow position
-    p_lst[0] += v_lst[0];
-    p_lst[1] += v_lst[1];
+    if (p.posx>8 & p.posx<canvas.width-8 & p.posy>8 & p.posy<canvas.height-8) {
+        if (l > c_r) {
+            p.posx += p.velx;
+            p.posy += p.vely;
+        }
+    }
+    else {
+        p.posx = Math.round(Math.random()*window.innerWidth) + 8;
+        p.posy = Math.round(Math.random()*window.innerHeight) + 8;
+    }
 
     return (dx < 0) ? Math.atan(dy/dx) : Math.atan(dy/dx)+Math.PI
 }
