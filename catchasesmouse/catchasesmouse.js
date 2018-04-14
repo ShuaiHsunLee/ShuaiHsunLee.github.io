@@ -12,7 +12,8 @@ var len = 0;
 var c_loc = [window.innerWidth/2, window.innerHeight/2];
 var c_r = 10;
 var max = 3; // max speed
-var a = 0.5; // accelerate
+var a = 1; // accelerate
+var devi = 5 * a; // accelerate with deviation
 
 function init() {
     resize();
@@ -115,8 +116,8 @@ function velo(p) {
     l = Math.sqrt(dx*dx + dy*dy);
 
     // accelerate heading to target
-    p.velx += a * dx/l;
-    p.vely += a * dy/l;
+    p.velx += devi*Math.random() * dx/l;
+    p.vely += devi*Math.random() * dy/l;
     V = Math.sqrt(p.velx*p.velx + p.vely*p.vely);
     if (V > max) {
         p.velx = max * p.velx/V;
