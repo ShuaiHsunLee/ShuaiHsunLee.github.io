@@ -14,34 +14,42 @@ canvas.height = height;
 speed = 5;
 player_radius = 30;
 keys = {};
-degrade_time = 2000;
+time = 2000;
 
+status = 'live';
+offset = 0;
+degrade_lst = [];
+map = [];
+score = 0;
+for (var i=0; i<w+1; i++) {
+    var lst = []
+    for (var j=0; j<h; j++) {
+        lst.push('ice');
+    }
+    map.push(lst);
+}
+player_pos = [width/2, height/2];
 
 init();
 
 function init() {
-    status = 'live';
-    offset = 0;
-    degrade_lst = [];
-    degrade_dic = {};
-    map = [];
-    score = 0;
-    for (var i=0; i<w+1; i++) {
-        var lst = []
-        for (var j=0; j<h; j++) {
-            lst.push('ice');
-        }
-        map.push(lst);
-    }
-    player_pos = [width/2, height/2];
-
     loadImage();
+    setInterval(run, time);
+}
+
+function run() {
     var e_lst = ['keydown', 'keyup'];
     for (var i=0; i<e_lst.length; i++)
         window.addEventListener(e_lst[i], move, false);
-    setInterval(addNewDegrade, degrade_time);
-    setInterval(degrade, degrade_time);
-    setInterval(loadImage, degrade_time);
+    degrade();
+}
+
+function gameMess() {
+    var mes = "score: " + score;
+    context.fillStyle = 'black';
+    context.font = '30px Calibri';
+    context.fillText(mes, 25, 40);
+    context.textAlign = "left";
 }
 
 function mess() {
@@ -58,7 +66,6 @@ function move(e) {
     }
     if (status == 'gameover') {
         // draw gameover
-        console.log('gameover');
         context.clearRect(0, 0, width, height);
         mess();
         return;
@@ -115,21 +122,11 @@ function move(e) {
             player_pos[1] -= v;
     }
 
+    removeNeg(degrade_lst, 0);
     loadImage();
 }
 
 function loadImage() {
-    if (isGG()){
-        status = 'gameover';
-    }
-    if (status == 'gameover') {
-        // draw gameover
-        console.log('gameover');
-        context.clearRect(0, 0, width, height);
-        mess();
-        return;
-    }
-
     water = img('water');
     half = img('half');
     ice = img('ice');
@@ -170,20 +167,19 @@ function draw() {
         }
     }
     circle(player_pos[0], player_pos[1], player_radius);
+
+    gameMess();
 }
 
-function removeNeg(tmp) {
-    if (tmp == degrade_lst.length)
+function removeNeg(lst, tmp) {
+    if (tmp == lst.length)
         return
-    if (degrade_lst[tmp][0] < 0) {
-        degrade_lst.splice(tmp, 1);
-        // working on it !!!!!!!!!!!!!degrade_dic[]
+    if (lst[tmp][0] < 0) {
+        lst.splice(tmp, 1);
         removeNeg(tmp);
     }
-    else {
+    else
         removeNeg(tmp+1);
-    }
-
 }
 
 // random map generator
@@ -197,15 +193,11 @@ function updateMap() {
         map.push(lst);
         map.splice(0, 1);
 
-        // move degrading ice to left
+        // degrade_lst
         if (!(typeof degrade_lst[0] === 'undefined')) {
-            removeNeg(0);
-            for (var i=0; i<degrade_lst.length; i++) {
+            for (var i=0; i<degrade_lst.length; i++)
                 degrade_lst[i] = [degrade_lst[i][0]-1, degrade_lst[i][1]];
-                // working on it degrade_dic
-                degrade_dic[[degrade_lst[i][1], degrade_lst[i][0]]] = false;
-                degrade_dic[[degrade_lst[i][1]-1, degrade_lst[i][0]]] = true;
-            }
+            removeNeg(degrade_lst, 0);
         }
 
         return offset - block_size;
@@ -245,18 +237,35 @@ function iceDegrade(s) {
 }
 
 function addNewDegrade() {
-    //var _w = Math.round(Math.random() * w);
-    //var _h = Math.round(Math.random() * h);
-    var _w = 5;
-    var _h = 5;
-    if (!([_w, _h] in degrade_dic)) {
+    var _w = Math.round(Math.random() * w);
+    var _h = Math.round(Math.random() * (h-1));
+    if (!(isInList(_w, _h, degrade_lst)))
         degrade_lst.push([_w, _h]);
-        degrade_dic[[_w, _h]] = true;
+}
+
+function isInList(x, y, lst) {
+    for (var i=0; i<lst.length; i++) {
+        if (lst[i][0] == x & lst[i][1] == y)
+            return true;
     }
+    return false;
 }
 
 function degrade() {
+    if (isGG()){
+        status = 'gameover';
+    }
+    if (status == 'gameover') {
+        // draw gameover
+        context.clearRect(0, 0, width, height);
+        mess();
+        return;
+    }
+
+    addNewDegrade();
     for (var i=0; i<degrade_lst.length; i++) {
+        removeNeg(degrade_lst, 0);
         map[degrade_lst[i][0]][degrade_lst[i][1]] = iceDegrade(map[degrade_lst[i][0]][degrade_lst[i][1]]);
     }
+    loadImage();
 }
