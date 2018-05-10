@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+        <style>
+            p, li{
+                color: #e7ad52;
+            }
+            strong {
+                color: yellow;
+            }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+                    <h2>WHAT'S VIM</h2>
+                    <p class="fragment">vim is a text editor</p>
+                </section>
+				<section>
+                    <h2>Mode</h2>
+                    <p class="fragment" style="color: #e7ad52;">Insert Mode</p>
+                    <p class="fragment" style="color: #e7ad52;">Normal Mode</p>
+                    <p class="fragment" style="color: #e7ad52;">Comment Mode</p>
+                    <p class="fragment" style="color: grey;">Visual Mode</p>
+                </section>
+                <section>
+                    <h2>INSERT MODE</h2>
+                    <p>typing...</p>
+                </section>
+                <section>
+                    <h2>NORMAL MODE</h2>
+                    <p>moving your cursor</p>
+                    <ul>
+                        <li class="fragment"><strong>DON'T</strong> use arrow key</li>
+                        <li class="fragment">use "h, j, k, l"</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>COMMENT MODE</h2>
+                    <p>doing something <strong>without typing and moving cursor</strong></p>
+                    <p>ex: save file, exit,...</p>
+                    <ul>
+                        <li class="fragment">save file: "w"</li>
+                        <li class="fragment">quit: "q"</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>HOW TO SWITCH MODE</h2>
+                    <p>Insert mode: "i"</p>
+                    <p>Normal mode: ESC</p>
+                    <p>Comment mode: ":"</p>
+                </section>
+                <section>
+                    <h1>Next...</h1>
+                </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
