@@ -36,7 +36,7 @@ function getMousePos(e) {
 
 function draw(e) {
     // cursor location print
-    context.fillStyle = 'black';
+    context.fillStyle = 'white';
     mess();
 
     // calculate point, and draw
