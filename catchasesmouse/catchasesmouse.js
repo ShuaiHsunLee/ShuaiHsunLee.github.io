@@ -40,7 +40,7 @@ function draw(e) {
     mess();
 
     // calculate point, and draw
-    context.fillStyle = 'blue';
+    context.fillStyle = '#4AFF33';
     p_lst.forEach(function(p){
         ang = velo(p);
         arrow(p.posx, p.posy, 10, Math.PI/6, ang);
