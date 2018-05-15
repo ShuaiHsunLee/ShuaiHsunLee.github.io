@@ -6,6 +6,14 @@
 
 		<title>reveal.js</title>
 
+        <!-- Bootstrap core CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
+
+
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/league.css">
 
@@ -33,42 +41,91 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-                    <h2>WHAT'S VIM</h2>
-                    <p class="fragment">vim is a text editor</p>
+                    <h2>Normal Mode</h2>
+                    <p class="fragment">It's really worth spending time on Normal Mode!!!</p>
                 </section>
 				<section>
-                    <h2>Mode</h2>
-                    <p class="fragment" style="color: #e7ad52;">Insert Mode</p>
-                    <p class="fragment" style="color: #e7ad52;">Normal Mode</p>
-                    <p class="fragment" style="color: #e7ad52;">Comment Mode</p>
-                    <p class="fragment" style="color: grey;">Visual Mode</p>
+                    <h2>Movement 1</h2>
+                    <p class="fragment">Times + Movement</p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">numbers: 1,2,3,4,...</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">move: h,j,k,l</li>
+                                    <li class="fragment">word(forward): w, e</li>
+                                    <li class="fragment">word(backward): b, ge</li>
+                                    <li class="fragment">jump into nth line: gg</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+				<section>
+                    <h2>Movement 2</h2>
+                    <p class="fragment">same line: 0, $, ^, g_</p>
+                    <p class="fragment">paragraph: {, }, (, )</p>
+                    <p class="fragment">first line: gg</p>
+                    <p class="fragment">last line: G</p>
+                    <p class="fragment">Current Page: H, M, L</p>
                 </section>
                 <section>
-                    <h2>INSERT MODE</h2>
-                    <p>typing...</p>
+                    <h2>Action 1</h2>
+                    <p>Verb + Times + Noun</p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <ul>
+                                    <li class="fragment">yank: y</li>
+                                    <li class="fragment">cut/delete: d</li>
+                                    <li class="fragment" style="color: red;">change: c</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm">
+                                <ul>
+                                    <li class="fragment">number: 1,2,3,...</li>
+                                    <li class="fragment">once: a</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm">
+                                <ul>
+                                    <li class="fragment">word: w</li>
+                                    <li class="fragment">paragraph: p</li>
+                                    <li class="fragment">movement: h, j, k, l</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                                <ul>
+                                    <li class="fragment" style="color: green;">inside: i</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm">
+                                <ul>
+                                    <li class="fragment" style="color: green;">brace: ', ", &lt, (, [, {</li>
+                                    <li class="fragment" style="color: green">tag for html: t</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <section>
-                    <h2>NORMAL MODE</h2>
-                    <p>moving your cursor</p>
-                    <ul>
-                        <li class="fragment"><strong>DON'T</strong> use arrow key</li>
-                        <li class="fragment">use "h, j, k, l"</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2>COMMENT MODE</h2>
-                    <p>doing something <strong>without typing and moving cursor</strong></p>
-                    <p>ex: save file, exit,...</p>
-                    <ul>
-                        <li class="fragment">save file: "w"</li>
-                        <li class="fragment">quit: "q"</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2>HOW TO SWITCH MODE</h2>
-                    <p>Insert mode: "i"</p>
-                    <p>Normal mode: ESC</p>
-                    <p>Comment mode: ":"</p>
+                    <h2>Action 2</h2>
+                    <p class="fragment">yank a line: yy</p>
+                    <p class="fragment">cut/delete a line: dd</p>
+                    <p class="fragment">change a line: cc</p>
+                    <p class="fragment" style="color: grey;">------------------------------------------------------</p>
+                    <p class="fragment">paste content from: yank, cut/delete/change</p>
+                    <p class="fragment">paste: p, P</p>
                 </section>
                 <section>
                     <h1>Next...</h1>
