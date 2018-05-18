@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+        <style>
+            p, li{
+                color: #e7ad52;
+            }
+            strong {
+                color: yellow;
+            }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+                    <h2>Command Mode &amp; Insert Mode</h2>
+                    <p class="fragment">Switch to Command Mode, Insert Mode, Visual Mode must from <strong>Normal Mode</strong></p>
+                    <p class="fragment">Review</p>
+                    <ul>
+                        <li class="fragment">to Command mode: :</li>
+                        <li class="fragment">to Insert Mode: i</li>
+                        <li class="fragment" style="color: grey;">to Visual Mode: v</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Basic Command Mode</h2>
+                    <p class="fragment">Write: w</p>
+                    <p class="fragment">Quit: q</p>
+                    <p class="fragment">Force: !</p>
+                    <p class="fragment">Combine together. Ex: wq</p>
+                </section>
+                <section>
+                    <h2>Open file 1</h2>
+                    <p class="fragment">Edit: e</p>
+                    <p class="fragment">Horizontal split: sp</p>
+                    <p class="fragment">Vertical split: vsp</p>
+                    <p class="fragment">Move panel: Prefix + Direction</p>
+                    <ul>
+                        <li class="fragment">Prefix: Ctrl + w</li>
+                        <li class="fragment">Direction: h, j, k, l</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Open file 2</h2>
+                    <p class="fragment">Tab edit: tabedit</p>
+                    <ul>
+                        <li class="fragment">Move forward: gt</li>
+                        <li class="fragment">Move backward: gT</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Command Mode</h2>
+                    <p class="fragment">The fact is that there are tons more interesting thing in Command Mode.</p>
+                    <p class="fragment">I will talk more about Command Mode when we use some plugins</p>
+                </section>
+                <section>
+                    <h2>Insert Mode</h2>
+                    <p class="fragment">Insert mode is only for typing.</p>
+                    <p class="fragment">Insert: i, a, s, o, I, A, S, O</p>
+                    <p class="fragment">Autocomplete: Ctrl + n/p</p>
+                    <ul>
+                        <li class="fragment">Move downward: Ctrl + n</li>
+                        <li class="fragment">Move upward: Ctrl + p</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Next...</h1>
+                </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
