@@ -6,12 +6,20 @@
 
 		<title>reveal.js</title>
 
-        <!-- Bootstrap core CSS -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-        <!-- Bootstrap core JavaScript -->
-        <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
+        <style>
+        .grid-container3 {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 10px;
+            padding: 10px;
+        }
+		.grid-item3 {
+			padding: 20px;
+			font-size: 30px;
+			text-align: center;
+		}
+        </style>
 
 
 		<link rel="stylesheet" href="css/reveal.css">
@@ -47,31 +55,29 @@
                 </section>
 				<section>
                     <h2>Find &amp; Search</h2>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm">
-                                <p class="fragment">Normal Mode</p>
-                                <ul>
-                                    <li class="fragment">find: f, t, F, T</li>
-                                    <li class="fragment">keep find: ;, ,</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm">
-                                <p class="fragment">Normal Mode</p>
-                                <ul>
-                                    <li class="fragment">search word with cursor: #, *</li>
-                                    <li class="fragment">next: n</li>
-                                    <li class="fragment">previous: N</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm">
-                                <p class="fragment">Command Line Mode</p>
-                                <ul>
-                                    <li class="fragment">Search: /, ?</li>
-                                    <li class="fragment">next: n</li>
-                                    <li class="fragment">previous: N</li>
-                                </ul>
-                            </div>
+                    <div class="grid-container3">
+                        <div class="grid-item3">
+                            <p class="fragment">Normal Mode</p>
+                            <ul>
+                                <li class="fragment">find: f, t, F, T</li>
+                                <li class="fragment">keep find: ;, ,</li>
+                            </ul>
+                        </div>
+                        <div class="grid-item3">
+                            <p class="fragment">Normal Mode</p>
+                            <ul>
+                                <li class="fragment">search word with cursor: #, *</li>
+                                <li class="fragment">next: n</li>
+                                <li class="fragment">previous: N</li>
+                            </ul>
+                        </div>
+                        <div class="grid-item3">
+                            <p class="fragment">Command Line Mode</p>
+                            <ul>
+                                <li class="fragment">Search: /, ?</li>
+                                <li class="fragment">next: n</li>
+                                <li class="fragment">previous: N</li>
+                            </ul>
                         </div>
                     </div>
                 </section>
